@@ -1,0 +1,484 @@
+{% load static %}
+<!DOCTYPE html>
+
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fastkart">
+    <meta name="keywords" content="Fastkart">
+    <meta name="author" content="Fastkart">
+    <link rel="icon" href="/static/images/favicon/1.png" type="image/x-icon">
+    <title>On-demand last-mile delivery</title>
+
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com/">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+        rel="stylesheet">
+
+    <!-- bootstrap css -->
+    <link id="rtl-link" rel="stylesheet" type="text/css" href="{% static 'assets/css/vendors/bootstrap.css' %}">
+
+    <!-- wow css -->
+    <link rel="stylesheet" href="{% static 'assets/animate.min.css' %}" />
+
+    <!-- font-awesome css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/vendors/font-awesome.css' %}">
+
+    <!-- feather icon css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/vendors/feather-icon.css' %}">
+
+    <!-- slick css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/vendors/slick/slick.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/vendors/slick/slick-theme.css' %}">
+
+    <!-- Iconly css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/bulk-style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/vendors/animate.css' %}">
+
+    <!-- Template css -->
+    <link id="color-link" rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Add this line to include Font Awesome CSS from a CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- Now, you can use Font Awesome icons in your HTML -->
+    {% comment %} <i class="fas fa-heart"></i> <!-- This will display a heart icon --> {% endcomment %}
+
+
+    
+
+</head>
+
+<body>
+
+    <!-- Loader Start -->
+    <div class="fullpage-loader">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <!-- Loader End -->
+
+    <!-- Header Start -->
+    <header class="header-compact header-absolute">
+        <div class="top-nav top-header sticky-header">
+            <div class="container-fluid-lg">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="navbar-top">
+                            <button class="navbar-toggler d-xl-none d-inline navbar-menu-button me-3" type="button"
+                                data-bs-toggle="offcanvas" data-bs-target="#primaryMenu">
+                                <span class="navbar-toggler-icon">
+                                    <i class="fa-solid fa-bars"></i>
+                                </span>
+                            </button>
+                            <a href="index.html" class="web-logo nav-logo">
+                                <img src="/static/images/logo/1.png" class="img-fluid blur-up lazyload" alt="">
+                            </a>
+
+                            <div class="middle-box">
+                                <div class="header-nav-middle">
+                                    <div class="main-nav navbar navbar-expand-xl navbar-light navbar-sticky">
+                                        <div class="offcanvas offcanvas-collapse order-xl-2" id="primaryMenu">
+                                            <div class="offcanvas-header navbar-shadow">
+                                                <h5>Menu</h5>
+                                                <button class="btn-close lead" type="button" data-bs-dismiss="offcanvas"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="offcanvas-body">
+                                                <ul class="navbar-nav">
+
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" href="{% url 'ecommerceapp:index' %}">Home</a>
+                                                    </li>
+
+                                                    <li class="nav-item dropdown">
+                                                        <a class="nav-link dropdown-toggle" href="javascript:void(0)"
+                                                            data-bs-toggle="dropdown">categories</a>
+
+                                                        <ul class="dropdown-menu">
+                                                           
+                                                            {% for c in categories %}
+                                                            <li>
+                                                                <a class="dropdown-item"
+                                                                   href="{% url 'ecommerceapp:category_product_list' c.cid %}">
+                                                                    {{ c.title }}
+                                                                </a>
+                                                            </li>
+                                                            
+                                                            {% endfor %}
+                                                            <li>
+                                                                <a class="dropdown-item"
+                                                                    href="{% url 'ecommerceapp:category_list' %}"
+                                                                    >
+                                                                    View all Categories</a>
+                                                            </li>
+                                                            
+                                                            
+                                                        </ul>
+                                                    </li>
+
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" href="{% url 'ecommerceapp:category_list' %}">products</a>
+                                                    </li>
+
+{% comment %} 
+                                                    <li class="nav-item dropdown dropdown-mega">
+                                                        <a class="nav-link dropdown-toggle ps-xl-2 ps-0"
+                                                            href="javascript:void(0)" data-bs-toggle="dropdown">Mega
+                                                            Menu</a>
+
+                                                        <div class="dropdown-menu dropdown-menu-2">
+                                                            <div class="row">
+                                                                <div class="dropdown-column col-xl-3">
+                                                                    <h5 class="dropdown-header">Daily Vegetables</h5>
+                                                                    <a class="dropdown-item"
+                                                                        href="shop-left-sidebar.html">Beans
+                                                                        & Brinjals</a>
+
+                                                                    <a class="dropdown-item"
+                                                                        href="shop-left-sidebar.html">Broccoli &
+                                                                        Cauliflower</a>
+
+                                                                    <a href="shop-left-sidebar.html"
+                                                                        class="dropdown-item">Chilies, Garlic</a>
+
+                                                                    <a class="dropdown-item"
+                                                                        href="shop-left-sidebar.html">Vegetables &
+                                                                        Salads</a>
+
+                                                                    <a class="dropdown-item"
+                                                                        href="shop-left-sidebar.html">Gourd,
+                                                                        Cucumber</a>
+
+                                                                    <a class="dropdown-item"
+                                                                        href="shop-left-sidebar.html">Herbs
+                                                                        & Sprouts</a>
+
+                                                                    <a href="demo-personal-portfolio.html"
+                                                                        class="dropdown-item">Lettuce & Leafy</a>
+                                                                </div>
+
+                                                                <div class="dropdown-column col-xl-3">
+                                                                    <h5 class="dropdown-header">Baby Tender</h5>
+                                                                    <a class="dropdown-item"
+                                                                        href="shop-left-sidebar.html">Beans
+                                                                        & Brinjals</a>
+
+                                                                    <a class="dropdown-item"
+                                                                        href="shop-left-sidebar.html">Broccoli &
+                                                                        Cauliflower</a>
+
+                                                                    <a class="dropdown-item"
+                                                                        href="shop-left-sidebar.html">Chilies,
+                                                                        Garlic</a>
+
+                                                                    <a class="dropdown-item"
+                                                                        href="shop-left-sidebar.html">Vegetables &
+                                                                        Salads</a>
+
+                                                                    <a class="dropdown-item"
+                                                                        href="shop-left-sidebar.html">Gourd,
+                                                                        Cucumber</a>
+
+                                                                    <a class="dropdown-item"
+                                                                        href="shop-left-sidebar.html">Potatoes &
+                                                                        Tomatoes</a>
+
+                                                                    <a href="shop-left-sidebar.html"
+                                                                        class="dropdown-item">Peas
+                                                                        & Corn</a>
+                                                                </div>
+
+                                                                <div class="dropdown-column col-xl-3">
+                                                                    <h5 class="dropdown-header">Exotic Vegetables</h5>
+                                                                    <a class="dropdown-item"
+                                                                        href="shop-left-sidebar.html">Asparagus &
+                                                                        Artichokes</a>
+
+                                                                    <a class="dropdown-item"
+                                                                        href="shop-left-sidebar.html">Avocados &
+                                                                        Peppers</a>
+
+                                                                    <a class="dropdown-item"
+                                                                        href="shop-left-sidebar.html">Broccoli &
+                                                                        Zucchini</a>
+
+                                                                    <a class="dropdown-item"
+                                                                        href="shop-left-sidebar.html">Celery, Fennel &
+                                                                        Leeks</a>
+
+                                                                    <a class="dropdown-item"
+                                                                        href="shop-left-sidebar.html">Chilies & Lime</a>
+                                                                </div>
+
+                                                                <div class="dropdown-column dropdown-column-img col-3">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+
+                                                  
+                                            
+                                                    <li class="nav-item dropdown">
+                                                        <a class="nav-link dropdown-toggle" href="javascript:void(0)"
+                                                            data-bs-toggle="dropdown">Seller</a>
+                                                        <ul class="dropdown-menu">
+                                                            <li>
+                                                                <a class="dropdown-item"
+                                                                    href="seller-become.html">Become a
+                                                                    Seller</a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="dropdown-item"
+                                                                    href="seller-dashboard.html">Seller
+                                                                    Dashboard</a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="dropdown-item"
+                                                                    href="seller-detail.html">Seller
+                                                                    Detail</a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="dropdown-item"
+                                                                    href="seller-detail-2.html">Seller
+                                                                    Detail 2</a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="dropdown-item" href="seller-grid.html">Seller
+                                                                    Grid</a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="dropdown-item"
+                                                                    href="seller-grid-2.html">Seller Grid
+                                                                    2</a>
+                                                            </li>
+                                                        </ul>
+                                                    </li> {% endcomment %}
+
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="rightside-box">
+                                <div class="location-box">
+                                    <button class="btn location-button" data-bs-toggle="modal"
+                                        data-bs-target="#locationModal">
+                                        <span class="location-arrow">
+                                            <i data-feather="map-pin"></i>
+                                        </span>
+                                        <span class="locat-name">Your Location</span>
+                                        <i class="fa-solid fa-angle-down"></i>
+                                    </button>
+                                </div>
+                                <ul class="right-side-menu">
+                                    <li class="right-side">
+                                        <a href="contact-us.html" class="delivery-login-box">
+                                            <div class="delivery-icon">
+                                                <i data-feather="phone-call"></i>
+                                            </div>
+                                            <div class="delivery-detail">
+                                                <h6>24/7 Delivery</h6>
+                                                <h5>+91 888 104 2340</h5>
+                                            </div>
+                                        </a>
+                                    </li>
+
+                                    <li class="right-side">
+
+                                            <button type="button" href="{% url 'ecommerceapp:wishlist' %}" class="btn p-0 position-relative header-wishlist">
+                                                <a href="{% url 'ecommerceapp:wishlist' %}" class="btn p-0 position-relative header-wishlist">
+                                                    <i data-feather="heart"></i></a>
+                                                <span class="position-absolute top-0 start-100 translate-middle badge cart-items-count">{{wishList.count}}
+                                                    {% comment %} <span class="visually-hidden">unread messages</span> {% endcomment %}
+                                                </span>
+                                            </button>
+
+                                    </li>
+
+                                    <li class="right-side">
+                                        <div class="onhover-dropdown header-badge">
+                                            
+                                            <button type="button" href="{% url 'ecommerceapp:cart' %}" class="btn p-0 position-relative header-wishlist">
+                                                <a href="{% url 'ecommerceapp:cart' %}" class="btn p-0 position-relative header-wishlist">
+                                                    <i data-feather="shopping-cart"></i></a>
+                                                <span class="position-absolute top-0 start-100 translate-middle badge cart-items-count">{{request.session.cart_data_obj|length}}
+                                                    <span class="visually-hidden">unread messages</span>
+                                                </span>
+                                            </button>
+
+                                            <div class="onhover-div" id="header-cart-list">
+                                                <ul class="cart-list">
+
+                                                    {% for product_id, item in cart_data.items %} 
+
+                                                    <li class="product-box-contain">
+                                                        <div class="drop-cart">
+                                                            <a href="{% url 'ecommerceapp:product_detail' item.pid %}" class="drop-image">
+                                                                <img src="{{item.image}}"
+                                                                    class="blur-up lazyload" alt="">
+                                                            </a>
+
+                                                            <div class="drop-contain">
+                                                                <a href="{% url 'ecommerceapp:product_detail' item.pid %}">
+                                                                    <h5>{{item.title}}</h5>
+                                                                </a>
+                                                                <h6><span>{{item.qty|floatformat}} x</span> ${{item.price}}</h6>
+                                                                <button class="close-button close_button">
+                                                                    <i class="fa-solid fa-xmark"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    
+                                                    {% endfor %}
+
+                                                </ul>
+
+                                                <div class="price-box">
+                                                    <h5>Total :</h5>
+                                                    <h4 class="theme-color fw-bold">${{cart_total_amount|floatformat}}</h4>
+                                                </div>
+
+                                                <div class="button-group">
+                                                    <a  href="{% url 'ecommerceapp:cart' %}" class="btn btn-sm cart-button">View Cart</a>
+                                                    <a href="{% url 'ecommerceapp:checkout' %}"  class="btn btn-sm cart-button theme-bg-color
+                                                    text-white">Checkout</a>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </li>
+
+
+
+                                    <li class="right-side onhover-dropdown">
+                                        <div class="delivery-login-box">
+                                            <div class="delivery-icon">
+                                                <i data-feather="user"></i>
+                                            </div>
+                                            <div class="delivery-detail">
+                                                <h6>Hello,</h6>
+                                                <h5>My Account</h5>
+                                            </div>
+                                        </div>
+
+                                        <div class="onhover-div onhover-div-login">
+                                            <ul class="user-box-name">
+
+                                                {% if request.user.is_authenticated %}
+                                                
+                                                <li class="product-box-contain">
+                                                    <a href="{% url 'userauths:sign-out' %}">Log Out</a>
+                                                </li>
+                                                
+                                                {% else %}
+                                                
+                                                <li class="product-box-contain">
+                                                    <i></i>
+                                                    <a href="{% url 'userauths:sign-in' %}">Log In</a>
+                                                </li>
+
+                                                <li class="product-box-contain">
+                                                    <a href="{% url 'userauths:sign-up' %}">Register</a>
+                                                </li>
+                                                
+
+                                                <li class="product-box-contain">
+                                                    <a href="{% url 'userauths:sign-out' %}">Forgot Password</a>
+                                                </li>
+                                                
+                                                {% endif %}
+
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{message.tags}}">
+                            <strong>{{message}}</strong>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                <script>
+                    setTimeout (() => {
+                        $(".alert").alert("close")
+                    },3000)
+                </script>
+            </div>
+        </div>
+    </header>
+    <!-- Header End -->
+
+
+    
+    <!-- latest jquery-->
+    <script src="/static/js/jquery-3.6.0.min.js"></script>
+
+    <!-- jquery ui-->
+    <script src="/static/js/jquery-ui.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+
+    <!-- Bootstrap js-->
+    <script src="/static/js/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="/static/js/bootstrap/bootstrap-notify.min.js"></script>
+    <script src="/static/js/bootstrap/popper.min.js"></script>
+
+    <!-- feather icon js-->
+    <script src="/static/js/feather/feather.min.js"></script>
+    <script src="/static/js/feather/feather-icon.js"></script>
+
+    <!-- Lazyload Js -->
+    <script src="/static/js/lazysizes.min.js"></script>
+
+    <!-- Slick js-->
+    <script src="/static/js/slick/slick.js"></script>
+    <script src="/static/js/slick/slick-animation.min.js"></script>
+    <script src="/static/js/slick/custom_slick.js"></script>
+
+    <!-- Auto Height Js -->
+    <script src="/static/js/auto-height.js"></script>
+
+    <!-- Fly Cart Js -->
+    <script src="/static/js/fly-cart.js"></script>
+
+    <!-- Quantity js -->
+    <script src="/static/js/quantity-2.js"></script>
+
+    <!-- WOW js -->
+    <script src="/static/js/wow.min.js"></script>
+    <script src="/static/js/custom-wow.js"></script>
+
+    <!-- script js -->
+    <script src="/static/js/script.js"></script>
+
+    <!-- thme setting js -->
+    <script src="/static/js/theme-setting.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+
+
+

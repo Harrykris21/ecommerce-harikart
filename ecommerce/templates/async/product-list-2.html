@@ -1,0 +1,18 @@
+      
+             {% for c in categories %}   
+                <div>
+                    <div class="shop-category-box">
+                        <a href="{% url 'ecommerceapp:category_product_list' c.cid %}">
+
+                            <div class="shop-category-image">
+                                <img src="{{c.image.url}}" class="blur-up lazyload" alt="">
+                            </div>
+                            <div class="category-box-name">
+                                <h6>{{c.title}}</h6>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}    
+
+

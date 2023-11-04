@@ -1,0 +1,17 @@
+<div class="category-menu menu-xl">
+    <ul>
+
+        
+    {% for c in categories %}
+        <li>
+            <div class="category-list">
+                <img src="{{c.image.url}}" class="blur-up lazyload" alt="">
+                <h5>
+                    <a href="{% url 'ecommerceapp:category_product_list' c.cid %}">{{c.title}}</a>
+                </h5>
+            </div>
+        </li>
+        {% endfor %}    
+
+    </ul>
+</div>

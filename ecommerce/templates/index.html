@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from themes.pixelstrap.com/fastkart/front-end/index-7.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 08 Aug 2023 06:29:11 GMT -->
+
+    <!-- mobile fix menu start -->
+
+
+
+    {% include "header.html" %}
+
+        {% comment %} {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %} {% endcomment %}
+
+
+
+    <div class="mobile-menu d-md-none d-block mobile-cart">
+        <ul>
+            <li class="active">
+                <a href="index.html">
+                    <i class="iconly-Home icli"></i>
+                    <span>Home</span>
+                </a>
+            </li>
+
+            <li class="mobile-category">
+                <a href="javascript:void(0)">
+                    <i class="iconly-Category icli js-link"></i>
+                    <span>Category</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="search.html" class="search-box">
+                    <i class="iconly-Search icli"></i>
+                    <span>Search</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="wishlist.html" class="notifi-wishlist">
+                    <i class="iconly-Heart icli"></i>
+                    <span>My Wish</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="cart.html">
+                    <i class="iconly-Bag-2 icli fly-cate"></i>
+                    <span>Cart</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- mobile fix menu end -->
+
+    <!-- Home Section Start -->
+    {% comment %} <section class="home-search-full pt-0 overflow-hidden">
+        <div class="container-fluid p-0">
+            <div class="row">
+                <div class="col-12">
+                    <div class="slider-animate">
+                        <div>
+                            <div class="home-contain rounded-0 p-0">
+                                <img src="/static/images/vegetable/bg-img.jpg" 
+                                    class="img-fluid bg-img blur-up lazyload bg-top" alt="">
+                                <div class="home-detail p-center text-center home-overlay position-relative">
+                                    <div>
+                                        <div class="content">
+                                            <h1>Get your grocery in 25 minutes</h1>
+                                            <h3>Better ingredients, better food, and beverages, at low prices</h3>
+                                            <div class="search-box">
+                                                <input type="search" class="form-control"
+                                                    placeholder="I'm searching for..."
+                                                    aria-label="Recipient's username">
+                                                <i data-feather="search"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> {% endcomment %}
+    <!-- Home Section End -->
+    <!-- Home Section Start -->
+<!-- Home Section Start -->
+<section class="home-search-full pt-0 overflow-hidden">
+    <div class="container-fluid p-0">
+        <div class="row">
+            <div class="col-12">
+                <div class="slider-animate">
+                    <div>
+                        <div class="home-contain rounded-0 p-0">
+                            <img src="/static/images/vegetable/bg-img.jpg" 
+                                class="img-fluid bg-img blur-up lazyload bg-top" alt=""
+                                style="position: relative;">
+                            <div class="home-detail p-center text-center home-overlay position-absolute-centered">
+                                <div class="content">
+                                    <h1>Get your grocery in 25 minutes</h1>
+                                    <h3>Better ingredients, better food, and beverages, at low prices</h3>
+                                    <div class="search-box">
+
+                                        <form action="{% url 'ecommerceapp:search' %}" method="GET">
+                                        <input type="search" name="q" class="form-control" placeholder="I'm searching for..."
+                                            aria-label="Recipient's username">
+
+                                            <button type="submit" class="search-button" style="border: none; background: none; padding: 0;">
+                                                <i data-feather="search" style="padding: 0; margin-top: -10px;"></i>
+                                            </button>
+                                        </form>    
+                                            
+
+                                        {% comment %} <i data-feather="search"></i> {% endcomment %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <!-- product section start -->
+    <section class="section-b-space">
+        <div class="container-fluid-lg">
+            <div class="row">
+                
+                <div class="col-xxl-3 col-lg-4 d-none d-lg-block">
+                   
+                    {% include "category-sidebar.html" %}
+
+                </div>
+
+                <div class="col-xxl-9 col-lg-8" id="remove-wishlist-index">
+
+                    <div class="title d-block">
+                        <h2 class="text-theme font-sm">Food Cupboard</h2>
+                        <p>A virtual assistant collects the products from your list</p>
+                    </div>
+
+                    <div class="row row-cols-xxl-5 row-cols-xl-4 row-cols-md-3 row-cols-2 g-sm-4 g-3 no-arrow
+                        section-b-space">
+              
+              
+
+
+
+                        {% for p in products %}
+
+                        <div>
+                            <div class="product-box-3 h-100 wow fadeInUp" data-wow-delay="0.05s">
+                                <div class="product-header">
+                                    <div class="product-image">
+                                        <a href="{% url 'ecommerceapp:product_detail' p.pid %}"> 
+                                            <img src="{{p.image.url}}"
+                                                class="img-fluid blur-up lazyload" alt="">
+                                        </a>
+
+                                        <ul class="product-option">
+                                            
+                                            <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
+
+
+                                                <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#view" 
+                                                data-product-title="{{ p.title }}" data-product-description="{{ p.description }}" 
+                                                data-product-price="{{ p.price }}" data-product-image="{{ p.image.url }}" data-product-qty="{{ p.qty }}" data-product-id="{{ p.id }}" >
+                                                 <i data-feather="eye"></i>
+                                             </a>
+
+                                             <script>
+                                                $(document).ready(function() {
+                                                    // Listen for a click on the "eye" button
+                                                    $('li[data-bs-toggle="tooltip"] a[data-bs-target="#view"]').click(function() {
+                                                        // Get the product details from data attributes
+                                                        var title = $(this).data('product-title');
+                                                        var description = $(this).data('product-description');
+                                                        var price = $(this).data('product-price');
+                                                        var image = $(this).data('product-image');
+                                                        var qty = $(this).data('product-qty');
+                                                        var productId = $(this).data('product-id'); // Retrieve the product ID
+
+                                            
+                                                        // Populate the modal with the product details
+                                                        $('#view .title-name').text(title);
+                                                        $('#view .price').text('$' + price);
+                                                        $('#view .qty').text(qty);
+                                                        $('#view .product-detail p').text(description);
+                                                        $('#view .slider-image img').attr('src', image);
+                                            
+                                                        // Show the modal
+                                                        $('#view').modal('show');
+                                                    });
+                                                });
+                                            </script>
+                                            
+
+                                            </li>
+
+                                            <li data-bs-toggle="tooltip" data-bs-placement="top" title="Compare">
+                                                <a href="{% url 'ecommerceapp:product_detail' p.pid %}">
+                                                    <i data-feather="refresh-cw"></i>
+                                                </a>
+                                            </li>
+
+                                            <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
+                                    
+
+                                            {% if p.id in wishlist_ids %}
+
+                                                <a href="{% url 'ecommerceapp:wishlist' %}" >
+                                                    <i class="fa-solid fa-heart fa-beat-fade fa-lg delete_wishlist_index" style="color: #f31616; cursor: pointer;" data-wishlist-product="{{ p.id }}"></i>
+                                                </a>
+                                                
+
+                                            {% else %}
+                                                <!-- This block will be displayed if the product is not in the wishlist --> 
+                                                    <i class="fa-regular fa-heart fa-shake fa-lg addwishlist-button" style="color: #0da487" data-index="{{p.id}}" data-in-wishlist="false"></i>                                              
+                                            {% endif %}
+
+
+                                            
+                                            
+                                            
+
+                 
+
+
+
+                                                <style>.addwishlist-button {
+                                                    color: red;
+                                                    cursor: pointer;
+                                                }
+                                                </style>
+                                                
+                                                
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="product-footer">
+                                    <div class="product-detail">
+                                        <span class="span-name">{{p.category}}</span>
+                                        <a href="{% url 'ecommerceapp:product_detail' p.pid %}">
+                                            <h5 class="name">{{p.title}}</h5>
+                                        </a>
+                                        <p class="text-content mt-1 mb-2 product-content">{{p.description}}</p>
+                                        <div class="product-rating mt-2">
+                                            <ul class="rating">
+                                                <li>
+                                                    <i data-feather="star" class="fill"></i>
+                                                </li>
+                                                <li>
+                                                    <i data-feather="star" class="fill"></i>
+                                                </li>
+                                                <li>
+                                                    <i data-feather="star"></i>
+                                                </li>
+                                                <li>
+                                                    <i data-feather="star"></i>
+                                                </li>
+                                                <li>
+                                                    <i data-feather="star"></i>
+                                                </li>
+                                            </ul>
+                                            <span>(2.4)</span>
+                                        </div>
+                                        <h6 class="unit"> {{p.qty}} g</h6>
+                                        <h5 class="price"><span class="theme-color">₹ {{p.price}}</span> <del>₹ {{p.old_price}}</del>
+                                        </h5>
+                                        <div class="add-to-cart-box bg-white">
+
+                                            {% comment %} Add To Cart {% endcomment %}
+
+
+
+
+                                            
+                                            
+                                            <input class="form-control input-number" type="hidden"
+                                            name="quantity" value={{p.id}} id="product-id-{{p.id}}">
+
+                                            <input class="form-control input-number" type="hidden"
+                                            name="quantity" value={{p.pid}} id="product-pid-{{p.id}}">
+                                            
+                                            <input class="form-control input-number" type="hidden"
+                                                name="quantity" value={{p.qty}} id="product-weight-{{p.id}}"> 
+
+                                            <input class="form-control input-number" type="hidden"
+                                                name="quantity" value={{p.title}} id="p-title-{{product.id}}">
+                                            
+                                            <input class="form-control input-number" type="hidden"
+                                                name="quantity" value={{p.price}} id="product-price-{{p.id}}">
+
+                                            <input class="form-control input-number" type="hidden"
+                                                name="quantity" value={{p.old_price}} id="product-old_price-{{p.id}}">    
+
+                                            <input class="form-control input-number" type="hidden"
+                                                name="quantity" value={{p.image.url}} id="product-image-{{p.id}}">  
+
+                                            <input class="form-control input-number" type="hidden"
+                                             name="quantity" value=1 id="product-quantity-{{p.id}}">  
+
+
+
+                                        {% comment %} <button class="btn btn-add-cart addcart-button" data-index="{{p.id}}" id="add-to-cart-btn-index-{{p.id}}">
+                                            <span class="add-icon bg-light-gray">
+                                                <i class="fa-solid fa-plus"></i>
+                                            </span>
+                                        </button> {% endcomment %}
+
+                                        <button class="btn btn-add-cart addcart-button" data-index="{{p.id}}" id="add-to-cart-btn">Add
+                                           
+                                                
+                                            <span class="add-icon bg-light-gray">
+                                                <i class="fa-solid fa-plus"></i>
+                                            </span>
+
+
+
+                                        </button>
+
+
+
+
+                                            {% comment %} <div class="cart_qty qty-box">
+                                                <div class="input-group bg-white">
+
+                                                    <button type="button" class="qty-left-minus bg-gray"
+                                                        data-type="minus" data-field="">
+                                                        <i class="fa fa-minus" aria-hidden="true"></i>
+                                                    </button>
+
+                                                    <input class="form-control input-number qty-input" type="text"
+                                                        name="quantity" value="0">
+
+                                                    <button type="button" class="qty-right-plus bg-gray"
+                                                        data-type="plus" data-field="">
+                                                        <i class="fa fa-plus" aria-hidden="true"></i>
+                                                    </button>
+                                                    
+                                                </div>
+                                            </div> {% endcomment %}
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        {% endfor %}
+
+
+
+
+                    </div>
+                    
+                    <div class="title d-block">
+                        <h2 class="text-theme font-sm">Food Cupboard</h2>
+                        <p>A virtual assistant collects the products from your list</p>
+                    </div>
+
+                  <div class="row row-cols-xxl-5 row-cols-xl-4 row-cols-md-3 row-cols-2 g-sm-4 g-3 no-arrow
+                        section-b-space">
+              
+              
+
+
+
+                        {% for p in products %}
+
+                        <div>
+                            <div class="product-box-3 h-100 wow fadeInUp" data-wow-delay="0.05s">
+                                <div class="product-header">
+                                    <div class="product-image">
+                                        <a href="{% url 'ecommerceapp:product_detail' p.pid %}"> 
+                                            <img src="{{p.image.url}}"
+                                                class="img-fluid blur-up lazyload" alt="">
+                                        </a>
+
+                                        <ul class="product-option">
+                                            
+                                            <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
+
+
+                                                <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#view" 
+                                                data-product-title="{{ p.title }}" data-product-description="{{ p.description }}" 
+                                                data-product-price="{{ p.price }}" data-product-image="{{ p.image.url }}" data-product-qty="{{ p.qty }}" data-product-id="{{ p.id }}" >
+                                                 <i data-feather="eye"></i>
+                                             </a>
+
+                                             <script>
+                                                $(document).ready(function() {
+                                                    // Listen for a click on the "eye" button
+                                                    $('li[data-bs-toggle="tooltip"] a[data-bs-target="#view"]').click(function() {
+                                                        // Get the product details from data attributes
+                                                        var title = $(this).data('product-title');
+                                                        var description = $(this).data('product-description');
+                                                        var price = $(this).data('product-price');
+                                                        var image = $(this).data('product-image');
+                                                        var qty = $(this).data('product-qty');
+                                                        var productId = $(this).data('product-id'); // Retrieve the product ID
+
+                                            
+                                                        // Populate the modal with the product details
+                                                        $('#view .title-name').text(title);
+                                                        $('#view .price').text('$' + price);
+                                                        $('#view .qty').text(qty);
+                                                        $('#view .product-detail p').text(description);
+                                                        $('#view .slider-image img').attr('src', image);
+                                            
+                                                        // Show the modal
+                                                        $('#view').modal('show');
+                                                    });
+                                                });
+                                            </script>
+                                            
+
+                                            </li>
+
+                                            <li data-bs-toggle="tooltip" data-bs-placement="top" title="Compare">
+                                                <a href="{% url 'ecommerceapp:product_detail' p.pid %}">
+                                                    <i data-feather="refresh-cw"></i>
+                                                </a>
+                                            </li>
+
+                                            <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
+                                    
+
+                                            {% if p.id in wishlist_ids %}
+
+                                                <a href="{% url 'ecommerceapp:wishlist' %}" >
+                                                    <i class="fa-solid fa-heart fa-beat-fade fa-lg delete_wishlist_index" style="color: #f31616; cursor: pointer;" data-wishlist-product="{{ p.id }}"></i>
+                                                </a>
+                                                
+
+                                            {% else %}
+                                                <!-- This block will be displayed if the product is not in the wishlist --> 
+                                                    <i class="fa-regular fa-heart fa-shake fa-lg addwishlist-button" style="color: #0da487" data-index="{{p.id}}" data-in-wishlist="false"></i>                                              
+                                            {% endif %}
+
+
+                                            
+                                            
+                                            
+
+                 
+
+
+
+                                                <style>.addwishlist-button {
+                                                    color: red;
+                                                    cursor: pointer;
+                                                }
+                                                </style>
+                                                
+                                                
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="product-footer">
+                                    <div class="product-detail">
+                                        <span class="span-name">{{p.category}}</span>
+                                        <a href="{% url 'ecommerceapp:product_detail' p.pid %}">
+                                            <h5 class="name">{{p.title}}</h5>
+                                        </a>
+                                        <p class="text-content mt-1 mb-2 product-content">{{p.description}}</p>
+                                        <div class="product-rating mt-2">
+                                            <ul class="rating">
+                                                <li>
+                                                    <i data-feather="star" class="fill"></i>
+                                                </li>
+                                                <li>
+                                                    <i data-feather="star" class="fill"></i>
+                                                </li>
+                                                <li>
+                                                    <i data-feather="star"></i>
+                                                </li>
+                                                <li>
+                                                    <i data-feather="star"></i>
+                                                </li>
+                                                <li>
+                                                    <i data-feather="star"></i>
+                                                </li>
+                                            </ul>
+                                            <span>(2.4)</span>
+                                        </div>
+                                        <h6 class="unit"> {{p.qty}} g</h6>
+                                        <h5 class="price"><span class="theme-color">₹ {{p.price}}</span> <del>₹ {{p.old_price}}</del>
+                                        </h5>
+                                        <div class="add-to-cart-box bg-white">
+
+                                            {% comment %} Add To Cart {% endcomment %}
+
+
+
+
+                                            
+                                            
+                                            <input class="form-control input-number" type="hidden"
+                                            name="quantity" value={{p.id}} id="product-id-{{p.id}}">
+
+                                            <input class="form-control input-number" type="hidden"
+                                            name="quantity" value={{p.pid}} id="product-pid-{{p.id}}">
+                                            
+                                            <input class="form-control input-number" type="hidden"
+                                                name="quantity" value={{p.qty}} id="product-weight-{{p.id}}"> 
+
+                                            <input class="form-control input-number" type="hidden"
+                                                name="quantity" value={{p.title}} id="p-title-{{product.id}}">
+                                            
+                                            <input class="form-control input-number" type="hidden"
+                                                name="quantity" value={{p.price}} id="product-price-{{p.id}}">
+
+                                            <input class="form-control input-number" type="hidden"
+                                                name="quantity" value={{p.old_price}} id="product-old_price-{{p.id}}">    
+
+                                            <input class="form-control input-number" type="hidden"
+                                                name="quantity" value={{p.image.url}} id="product-image-{{p.id}}">  
+
+                                            <input class="form-control input-number" type="hidden"
+                                             name="quantity" value=1 id="product-quantity-{{p.id}}">  
+
+
+
+                                        {% comment %} <button class="btn btn-add-cart addcart-button" data-index="{{p.id}}" id="add-to-cart-btn-index-{{p.id}}">
+                                            <span class="add-icon bg-light-gray">
+                                                <i class="fa-solid fa-plus"></i>
+                                            </span>
+                                        </button> {% endcomment %}
+
+                                        <button class="btn btn-add-cart addcart-button" data-index="{{p.id}}" id="add-to-cart-btn">Add
+                                           
+                                                
+                                            <span class="add-icon bg-light-gray">
+                                                <i class="fa-solid fa-plus"></i>
+                                            </span>
+
+
+
+                                        </button>
+
+
+
+
+                                            {% comment %} <div class="cart_qty qty-box">
+                                                <div class="input-group bg-white">
+
+                                                    <button type="button" class="qty-left-minus bg-gray"
+                                                        data-type="minus" data-field="">
+                                                        <i class="fa fa-minus" aria-hidden="true"></i>
+                                                    </button>
+
+                                                    <input class="form-control input-number qty-input" type="text"
+                                                        name="quantity" value="0">
+
+                                                    <button type="button" class="qty-right-plus bg-gray"
+                                                        data-type="plus" data-field="">
+                                                        <i class="fa fa-plus" aria-hidden="true"></i>
+                                                    </button>
+                                                    
+                                                </div>
+                                            </div> {% endcomment %}
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        {% endfor %}
+
+
+
+
+                    </div>
+                
+            </div>
+        </div>
+    </section>
+    <!-- product section end -->
+
+
+    <script>
+        feather.replace();
+      </script>
+      
+
+
+    
+    {% comment %} {% include "footer.html" %} {% endcomment %}
+
+</body>
+
+{% include "footer.html" %}
+<!-- Mirrored from themes.pixelstrap.com/fastkart/front-end/index-7.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 08 Aug 2023 06:29:33 GMT -->
+</html>

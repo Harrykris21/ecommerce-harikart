@@ -1,0 +1,226 @@
+{% load static %}
+<!DOCTYPE html>
+
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fastkart">
+    <meta name="keywords" content="Fastkart">
+    <meta name="author" content="Fastkart">
+    <link rel="icon" href="/static/assets/images/favicon/1.png" type="image/x-icon">
+    <title>On-demand last-mile delivery</title>
+    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+
+
+
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com/">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+        rel="stylesheet">
+
+    <!-- bootstrap css -->
+    <link id="rtl-link" rel="stylesheet" type="text/css" href="{% static 'assets/css/vendors/bootstrap.css' %}">
+
+    <!-- wow css -->
+    {% comment %} <link rel="stylesheet" href="{% static 'assets/animate.min.css' %}" /> {% endcomment %}
+
+    <!-- font-awesome css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/vendors/font-awesome.css' %}">
+
+    <!-- feather icon css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/vendors/feather-icon.css' %}">
+
+    <!-- slick css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/vendors/slick/slick.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/vendors/slick/slick-theme.css' %}">
+
+    <!-- Iconly css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/bulk-style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/vendors/animate.css' %}">
+
+    <!-- Template css -->
+    <link id="color-link" rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+
+    <!-- Include Zoom.js from a CDN (replace 'zoom-library-url' with the actual URL) -->
+        <script src="https://cdn.example.com/zoom-library.js"></script>
+
+</head>
+
+<body>
+
+
+  
+
+
+    
+    <!-- latest jquery-->
+    <script src="/static/assets/js/jquery-3.6.0.min.js"></script>
+
+    <!-- jquery ui-->
+    <script src="/static/assets/js/jquery-ui.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+    <!-- Bootstrap js-->
+    <script src="/static/assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="/static/assets/js/bootstrap/bootstrap-notify.min.js"></script>
+    <script src="/static/assets/js/bootstrap/popper.min.js"></script>
+
+    <!-- feather icon js-->
+    <script src="/static/assets/js/feather/feather.min.js"></script>
+    <script src="/static/assets/js/feather/feather-icon.js"></script>
+
+    <!-- Lazyload Js -->
+    <script src="/static/assets/js/lazysizes.min.js"></script>
+
+    <!-- Slick js-->
+    <script src="/static/assets/js/slick/slick.js"></script>
+    <script src="/static/assets/js/slick/slick-animation.min.js"></script>
+    <script src="/static/assets/js/slick/custom_slick.js"></script>
+
+    <!-- Auto Height Js -->
+    <script src="/static/assets/js/auto-height.js"></script>
+
+    <!-- Fly Cart Js -->
+    <script src="/static/assets/js/fly-cart.js"></script>
+
+    <!-- Quantity js -->
+    <script src="/static/assets/js/quantity-2.js"></script>
+
+    <!-- WOW js -->
+    <script src="/static/assets/js/wow.min.js"></script>
+    <script src="/static/assets/js/custom-wow.js"></script>
+
+    <!-- script js -->
+    <script src="/static/assets/js/script.js"></script>
+
+    <!-- thme setting js -->
+    <script src="/static/assets/js/theme-setting.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+
+
+
+
+
+    <script src="/static/assets/js/function.js"></script>    
+
+    
+    
+
+    <!-- Wishlist Section Start -->
+    <section class="wishlist-section section-b-space" id="wishlist-list">
+        <div class="container-fluid-lg">
+            <div class="row g-sm-3 g-2">
+
+
+
+
+
+                {% for w in w %}
+                <div class="col-xxl-2 col-lg-3 col-md-4 col-6 product-box-contain">
+                    <div class="product-box-3 h-100">
+                        <div class="product-header">
+                            <div class="product-image">
+                                <a href="product-left-thumbnail.html">
+                                    <img src="{{w.product.image.url}}" class="img-fluid blur-up lazyload"
+                                        alt="">
+                                </a>
+
+                                <div class="product-header-top">
+                                    <button class="btn wishlist-button close_button delete_wishlist" data-wishlist-produt="{{ w.id }}">
+                                        <i data-feather="x"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-detail">
+                                <span class="span-name">Vegetable</span>
+                                <a href="product-left-thumbnail.html">
+                                    <h5 class="name">{{w.product.title}} {{w.product.qty}} g</h5>
+                                </a>
+                                <h6 class="unit mt-1">{{w.product.qty}} ml</h6>
+                                <h5 class="price">
+                                    <span class="theme-color">${{w.product.price}}</span>
+                                    <del>${{w.product.old_price}}</del>
+                                </h5>
+
+                                <div class="add-to-cart-box bg-white mt-2">
+
+                                    {% comment %} <button class="btn btn-add-cart addcart-button">Add
+                                        <span class="add-icon bg-light-gray">
+                                            <i class="fa-solid fa-plus"></i>
+                                        </span>
+                                    </button> {% endcomment %}
+                                    <input class="form-control input-number" type="hidden"
+                                    name="quantity" value={{w.product.id}} id="product-id-{{w.product.id}}">
+
+                                    <input class="form-control input-number" type="hidden"
+                                    name="quantity" value={{w.product.pid}} id="product-pid-{{w.product.id}}">
+                                    
+                                    <input class="form-control input-number" type="hidden"
+                                        name="quantity" value={{w.product.qty}} id="product-weight-{{w.product.id}}"> 
+
+                                    <input class="form-control input-number" type="hidden"
+                                        name="quantity" value={{w.product.title}} id="p-title-{{w.product.id}}">
+                                    
+                                    <input class="form-control input-number" type="hidden"
+                                        name="quantity" value={{w.product.price}} id="product-price-{{w.product.id}}">
+
+                                    <input class="form-control input-number" type="hidden"
+                                        name="quantity" value={{w.product.old_price}} id="product-old_price-{{w.product.id}}">    
+
+                                    <input class="form-control input-number" type="hidden"
+                                        name="quantity" value={{w.product.image.url}} id="product-image-{{w.product.id}}">  
+                                    
+                                        <input class="form-control input-number qty-input" type="hidden"
+                                        name="quantity" value="1" id="product-quantity-{{w.product.id}}">    
+                                        
+
+
+                                    <button class="btn btn-add-cart addcart-button" data-index="{{w.product.id}}" id="add-to-cart-btn-index-{{w.product.id}}">Add
+
+                                    
+                                    {% comment %} <div class="cart_qty qty-box">
+                                        <div class="input-group bg-white">
+                                            <button type="button" class="qty-left-minus bg-gray" data-type="minus"
+                                                data-field="">
+                                                <i class="fa fa-minus" aria-hidden="true"></i>
+                                            </button>
+                                            <input class="form-control input-number qty-input" type="text"
+                                                name="quantity" value="0">
+                                            <button type="button" class="qty-right-plus bg-gray" data-type="plus"
+                                                data-field="">
+                                                <i class="fa fa-plus" aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+                                    </div> {% endcomment %}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {%empty%}
+                <h1>Nothinh In WishList</h1>
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+    <!-- Wishlist Section End -->

@@ -1,0 +1,341 @@
+{% load static %}
+<!DOCTYPE html>
+
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fastkart">
+    <meta name="keywords" content="Fastkart">
+    <meta name="author" content="Fastkart">
+    <link rel="icon" href="/static/assets/images/favicon/1.png" type="image/x-icon">
+    <title>On-demand last-mile delivery</title>
+    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+
+
+
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com/">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+        rel="stylesheet">
+
+    <!-- bootstrap css -->
+    <link id="rtl-link" rel="stylesheet" type="text/css" href="{% static 'assets/css/vendors/bootstrap.css' %}">
+
+    <!-- wow css -->
+    {% comment %} <link rel="stylesheet" href="{% static 'assets/animate.min.css' %}" /> {% endcomment %}
+
+    <!-- font-awesome css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/vendors/font-awesome.css' %}">
+
+    <!-- feather icon css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/vendors/feather-icon.css' %}">
+
+    <!-- slick css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/vendors/slick/slick.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/vendors/slick/slick-theme.css' %}">
+
+    <!-- Iconly css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/bulk-style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/vendors/animate.css' %}">
+
+    <!-- Template css -->
+    <link id="color-link" rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+
+    <!-- Include Zoom.js from a CDN (replace 'zoom-library-url' with the actual URL) -->
+        <script src="https://cdn.example.com/zoom-library.js"></script>
+
+</head>
+
+<body>
+
+>
+
+  
+
+
+    
+    <!-- latest jquery-->
+    <script src="/static/assets/js/jquery-3.6.0.min.js"></script>
+
+    <!-- jquery ui-->
+    <script src="/static/assets/js/jquery-ui.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+    <!-- Bootstrap js-->
+    <script src="/static/assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="/static/assets/js/bootstrap/bootstrap-notify.min.js"></script>
+    <script src="/static/assets/js/bootstrap/popper.min.js"></script>
+
+    <!-- feather icon js-->
+    <script src="/static/assets/js/feather/feather.min.js"></script>
+    <script src="/static/assets/js/feather/feather-icon.js"></script>
+
+    <!-- Lazyload Js -->
+    <script src="/static/assets/js/lazysizes.min.js"></script>
+
+    <!-- Slick js-->
+    <script src="/static/assets/js/slick/slick.js"></script>
+    <script src="/static/assets/js/slick/slick-animation.min.js"></script>
+    <script src="/static/assets/js/slick/custom_slick.js"></script>
+
+    <!-- Auto Height Js -->
+    <script src="/static/assets/js/auto-height.js"></script>
+
+    <!-- Fly Cart Js -->
+    <script src="/static/assets/js/fly-cart.js"></script>
+
+    <!-- Quantity js -->
+    <script src="/static/assets/js/quantity-2.js"></script>
+
+    <!-- WOW js -->
+    <script src="/static/assets/js/wow.min.js"></script>
+    <script src="/static/assets/js/custom-wow.js"></script>
+
+    <!-- script js -->
+    <script src="/static/assets/js/script.js"></script>
+
+    <!-- thme setting js -->
+    <script src="/static/assets/js/theme-setting.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+
+
+
+
+
+    <script src="/static/assets/js/function.js"></script>    
+
+    
+    
+    <!-- Cart Section Start -->
+    <section class="cart-section section-b-space" id="cart-list">
+        <div class="container-fluid-lg">
+            <div class="row g-sm-5 g-3">
+                <div class="col-xxl-9">
+                    <div class="cart-table">
+                        <div class="table-responsive-xl">
+                            <table class="table">
+                                <tbody>
+
+
+                                    {% for product_id, item in cart_data.items %}    
+
+                                    <tr class="product-box-contain">
+                                        <td class="product-detail">
+                                            <div class="product border-0">
+                                                <a href="{% url 'ecommerceapp:product_detail' item.pid %}" class="product-image">
+                                                    <img src="{{item.image}}"
+                                                        class="img-fluid blur-up lazyload" alt="">
+                                                </a>
+                                                <div class="product-detail">
+                                                    <ul>
+                                                        <li class="name">
+                                                            <a href="{% url 'ecommerceapp:product_detail' item.pid %}">{{item.title}}</a>
+                                                        </li>
+
+                                                        <li class="text-content"><span class="text-title">Sold
+                                                                By:</span> Fresho</li>
+
+                                                        <li class="text-content"><span
+                                                                class="text-title">Quantity</span> - {{item.qty}} g</li>
+
+                                                        <li>
+                                                            <h5 class="text-content d-inline-block">Price :</h5>
+                                                            <span>${{item.price|floatformat}}</span>
+                                                            <span class="text-content">${{ item.savingprice }}</span>
+                                                        </li>
+
+                                                        <li>
+                                                            <h5 class="saving theme-color">Saving : ${{ item.savingprice }}</h5>
+                                                        </li>
+
+                                                        <li class="quantity-price-box">
+                                                            <div class="cart_qty">
+                                                                <div class="input-group">
+
+                                                                    <button type="button" class="btn qty-left-minus update-qty"
+                                                                        data-type="minus" data-field="">
+                                                                        <i class="fa fa-minus ms-0"
+                                                                            aria-hidden="true"></i>
+                                                                    </button>
+
+                                                                    <input class="form-control input-number qty-input"
+                                                                        type="text" name="quantity" value="0">
+
+                                                                    <button type="button" class="btn qty-right-plus update-qty"
+                                                                        data-type="plus" data-field="">
+                                                                        <i class="fa fa-plus ms-0"
+                                                                            aria-hidden="true"></i>
+                                                                    </button>
+
+                                                                </div>
+                                                            </div>
+                                                        </li>
+
+                                                        <li>
+                                                            <h5>Total: ${{item.tprice}}/h5>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                        <td class="price">
+                                            <h4 class="table-title text-content">Price</h4>
+                                            <h5>${{item.price|floatformat}} <del class="text-content">$ {{ item.oldprice }}</del></h5>
+                                            <h6 class="theme-color">You Save :  ${{ item.savingprice }}</h6>
+                                        </td>
+
+                                        <td class="quantity">
+                                            <h4 class="table-title text-content">Qty</h4>
+                                            <div class="quantity-price">
+                                                <div class="cart_qty">
+                                                    <div class="input-group">
+
+                                                        <input type="hidden" value="{{item.price}}" class="item-price-{{ product_id}}">
+
+                                                        <button type="button" class="btn qty-left-minus update-qty " data-product="{{product_id}}"
+                                                            data-type="minus" data-field="">
+                                                            <i class="fa fa-minus ms-0" aria-hidden="true"></i>
+                                                        </button>
+
+                                                        <input class="form-control input-number qty-input product-qty-{{ product_id }} "  type="text"
+                                                            name="quantity" value="{{item.qty|floatformat:0}}">
+
+                                                        <button type="button" class="btn qty-right-plus update-qty " data-product="{{product_id}}"
+                                                            data-type="plus" data-field="">
+                                                            <i class="fa fa-plus ms-0" aria-hidden="true"></i>
+                                                        </button>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                        <td class="subtotal">
+                                            <h4 class="table-title text-content">Total</h4>
+                                            <h5 class="sub_item_total_amount"> ${{ item.tprice }}</h5>
+
+
+                                        </td>
+
+                                        <td class="save-remove">
+                                            <h4 class="table-title text-content">Action</h4>
+                                            {% comment %} <a class="save notifi-wishlist" href="javascript:void(0)">Save for later</a> {% endcomment %}
+                                            {% comment %} <a class="remove close_button" href="javascript:void(0)">Remove</a> {% endcomment %}
+
+                                            <button class="remove-button close_button delete-product"  type="button" data-product="{{product_id}}">Remove</button>
+                                            <style>.remove-button {
+                                                /* Copy the styles you want from the "remove" link */
+                                                background-color: transparent;
+                                                color: blue; /* Change the color to match the link */
+                                                text-decoration: underline; /* Add underlines like a link */
+                                                border: none;
+                                                cursor: pointer;
+                                                padding: 0;
+                                                font: inherit;
+                                            }
+                                            
+                                            .remove-button:hover {
+                                                /* Define hover styles similar to a link */
+                                                text-decoration: none; /* Remove underline on hover */
+                                                color: red; /* Change color on hover */
+                                            }
+                                            </style>
+
+
+                                        </td>
+                                    </tr>
+
+                                {% endfor %}  
+
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xxl-3">
+                    <div class="summery-box p-sticky">
+                        <div class="summery-header">
+                            <h3>Cart Total</h3>
+                        </div>
+
+                        <div class="summery-contain">
+                            <div class="coupon-cart">
+                                <h6 class="text-content mb-2">Coupon Apply</h6>
+                                <div class="mb-3 coupon-box input-group">
+                                    <input type="email" class="form-control" id="exampleFormControlInput1"
+                                        placeholder="Enter Coupon Code Here...">
+                                    <button class="btn-apply">Apply</button>
+                                </div>
+                            </div>
+                            <ul>
+                                <li>
+                                    <h4>Subtotal</h4>
+                                    <h4 class="price">${{cart_total_amount|floatformat}}</h4>
+                                </li>
+
+                                <li>
+                                    <h4>Coupon Discount</h4>
+                                    <h4 class="price">(-) 0.00</h4>
+                                </li>
+
+                                <li class="align-items-start">
+                                    <h4>Shipping</h4>
+                                    <h4 class="price text-end">Free</h4>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <ul class="summery-total">
+                            <li class="list-total border-top-0">
+                                <h4>Total (USD)</h4>
+                                <h4 class="price theme-color">${{cart_total_amount|floatformat}}</h4>
+                            </li>
+                        </ul>
+
+                        {% if totalcartitems %}
+
+                        <div class="button-group cart-button">
+                            <ul>
+                                <li>
+                                    <button onclick="location.href = 'checkout.html';"
+                                        class="btn btn-animation proceed-btn fw-bold">Process To Checkout</button>
+                                </li>
+
+                                <li>
+                                    <button onclick="location.href = 'index.html';"
+                                        class="btn btn-light shopping-button text-dark">
+                                        <i class="fa-solid fa-arrow-left-long"></i>Return To Shopping</button>
+                                </li>
+                            </ul>
+                        </div>
+
+                       {% endif %}
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+    <!-- Cart Section End -->

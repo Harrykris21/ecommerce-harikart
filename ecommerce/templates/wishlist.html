@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<body>
+
+
+    <!-- Header Start -->
+    {% include "header-shop.html" %}
+    <!-- Header End -->
+
+    <!-- mobile fix menu start -->
+    <div class="mobile-menu d-md-none d-block mobile-cart">
+        <ul>
+            <li class="active">
+                <a href="index.html">
+                    <i class="iconly-Home icli"></i>
+                    <span>Home</span>
+                </a>
+            </li>
+
+            <li class="mobile-category">
+                <a href="javascript:void(0)">
+                    <i class="iconly-Category icli js-link"></i>
+                    <span>Category</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="search.html" class="search-box">
+                    <i class="iconly-Search icli"></i>
+                    <span>Search</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="wishlist.html" class="notifi-wishlist">
+                    <i class="iconly-Heart icli"></i>
+                    <span>My Wish</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="cart.html">
+                    <i class="iconly-Bag-2 icli fly-cate"></i>
+                    <span>Cart</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- mobile fix menu end -->
+
+    <!-- Breadcrumb Section Start -->
+    <section class="breadscrumb-section pt-0">
+        <div class="container-fluid-lg">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadscrumb-contain">
+                        <h2>Wishlist</h2>
+                        <nav>
+                            <ol class="breadcrumb mb-0">
+                                <li class="breadcrumb-item">
+                                    <a href="index.html">
+                                        <i class="fa-solid fa-house"></i>
+                                    </a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">Wishlist</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+
+    <!-- Wishlist Section Start -->
+    <section class="wishlist-section section-b-space" id="wishlist-list">
+        <div class="container-fluid-lg">
+            <div class="row g-sm-3 g-2">
+
+
+
+
+
+                {% for w in w %}
+                <div class="col-xxl-2 col-lg-3 col-md-4 col-6 product-box-contain">
+                    <div class="product-box-3 h-100">
+                        <div class="product-header">
+                            <div class="product-image">
+                                <a href="{% url 'ecommerceapp:product_detail' w.product.pid %}"> 
+                                    <img src="{{w.product.image.url}}" class="img-fluid blur-up lazyload"
+                                        alt="">
+                                </a>
+
+                                <div class="product-header-top">
+                                    <button class="btn wishlist-button close_button delete_wishlist" data-wishlist-produt="{{ w.id }}">
+                                        <i data-feather="x"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-detail">
+                                <span class="span-name">Vegetable</span>
+                                <a href="{% url 'ecommerceapp:product_detail' w.product.pid %}"> 
+                                    <h5 class="name">{{w.product.title}} {{w.product.qty}} g</h5>
+                                </a>
+                                <h6 class="unit mt-1">{{w.product.qty}} ml</h6>
+                                <h5 class="price">
+                                    <span class="theme-color">${{w.product.price}}</span>
+                                    <del>${{w.product.old_price}}</del>
+                                </h5>
+
+                                <div class="add-to-cart-box bg-white mt-2">
+
+                                    {% comment %} <button class="btn btn-add-cart addcart-button">Add
+                                        <span class="add-icon bg-light-gray">
+                                            <i class="fa-solid fa-plus"></i>
+                                        </span>
+                                    </button> {% endcomment %}
+                                    <input class="form-control input-number" type="hidden"
+                                    name="quantity" value={{w.product.id}} id="product-id-{{w.product.id}}">
+
+                                    <input class="form-control input-number" type="hidden"
+                                    name="quantity" value={{w.product.pid}} id="product-pid-{{w.product.id}}">
+                                    
+                                    <input class="form-control input-number" type="hidden"
+                                        name="quantity" value={{w.product.qty}} id="product-weight-{{w.product.id}}"> 
+
+                                    <input class="form-control input-number" type="hidden"
+                                        name="quantity" value={{w.product.title}} id="p-title-{{w.product.id}}">
+                                    
+                                    <input class="form-control input-number" type="hidden"
+                                        name="quantity" value={{w.product.price}} id="product-price-{{w.product.id}}">
+
+                                    <input class="form-control input-number" type="hidden"
+                                        name="quantity" value={{w.product.old_price}} id="product-old_price-{{w.product.id}}">    
+
+                                    <input class="form-control input-number" type="hidden"
+                                        name="quantity" value={{w.product.image.url}} id="product-image-{{w.product.id}}">  
+                                    
+                                        <input class="form-control input-number qty-input" type="hidden"
+                                        name="quantity" value="1" id="product-quantity-{{w.product.id}}">    
+                                        
+
+
+                                    <button class="btn btn-add-cart addcart-button" data-index="{{w.product.id}}" id="add-to-cart-btn-index-{{w.product.id}}">Add
+
+                                    
+                                    {% comment %} <div class="cart_qty qty-box">
+                                        <div class="input-group bg-white">
+                                            <button type="button" class="qty-left-minus bg-gray" data-type="minus"
+                                                data-field="">
+                                                <i class="fa fa-minus" aria-hidden="true"></i>
+                                            </button>
+                                            <input class="form-control input-number qty-input" type="text"
+                                                name="quantity" value="0">
+                                            <button type="button" class="qty-right-plus bg-gray" data-type="plus"
+                                                data-field="">
+                                                <i class="fa fa-plus" aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+                                    </div> {% endcomment %}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {%empty%}
+                <h1>Nothinh In WishList</h1>
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+    <!-- Wishlist Section End -->
+
+    <!-- Footer Section Start -->
+    {% include "footer.html" %}
+    <!-- Footer Section End -->
+
+ 
+
+    
+
+
+</body>
+
+
+<!-- Mirrored from themes.pixelstrap.com/fastkart/front-end/wishlist.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 08 Aug 2023 06:31:14 GMT -->
+</html>

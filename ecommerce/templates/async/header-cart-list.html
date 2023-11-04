@@ -1,0 +1,165 @@
+{% load static %}
+<!DOCTYPE html>
+
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fastkart">
+    <meta name="keywords" content="Fastkart">
+    <meta name="author" content="Fastkart">
+    <link rel="icon" href="/static/assets/images/favicon/1.png" type="image/x-icon">
+    <title>On-demand last-mile delivery</title>
+    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+
+
+
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com/">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+        rel="stylesheet">
+
+    <!-- bootstrap css -->
+    <link id="rtl-link" rel="stylesheet" type="text/css" href="{% static 'assets/css/vendors/bootstrap.css' %}">
+
+    <!-- wow css -->
+    {% comment %} <link rel="stylesheet" href="{% static 'assets/animate.min.css' %}" /> {% endcomment %}
+
+    <!-- font-awesome css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/vendors/font-awesome.css' %}">
+
+    <!-- feather icon css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/vendors/feather-icon.css' %}">
+
+    <!-- slick css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/vendors/slick/slick.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/vendors/slick/slick-theme.css' %}">
+
+    <!-- Iconly css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/bulk-style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/vendors/animate.css' %}">
+
+    <!-- Template css -->
+    <link id="color-link" rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+
+    <!-- Include Zoom.js from a CDN (replace 'zoom-library-url' with the actual URL) -->
+        <script src="https://cdn.example.com/zoom-library.js"></script>
+
+</head>
+
+<body>
+
+>
+
+  
+
+
+    
+    <!-- latest jquery-->
+    <script src="/static/assets/js/jquery-3.6.0.min.js"></script>
+
+    <!-- jquery ui-->
+    <script src="/static/assets/js/jquery-ui.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+    <!-- Bootstrap js-->
+    <script src="/static/assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="/static/assets/js/bootstrap/bootstrap-notify.min.js"></script>
+    <script src="/static/assets/js/bootstrap/popper.min.js"></script>
+
+    <!-- feather icon js-->
+    <script src="/static/assets/js/feather/feather.min.js"></script>
+    <script src="/static/assets/js/feather/feather-icon.js"></script>
+
+    <!-- Lazyload Js -->
+    <script src="/static/assets/js/lazysizes.min.js"></script>
+
+    <!-- Slick js-->
+    <script src="/static/assets/js/slick/slick.js"></script>
+    <script src="/static/assets/js/slick/slick-animation.min.js"></script>
+    <script src="/static/assets/js/slick/custom_slick.js"></script>
+
+    <!-- Auto Height Js -->
+    <script src="/static/assets/js/auto-height.js"></script>
+
+    <!-- Fly Cart Js -->
+    <script src="/static/assets/js/fly-cart.js"></script>
+
+    <!-- Quantity js -->
+    <script src="/static/assets/js/quantity-2.js"></script>
+
+    <!-- WOW js -->
+    <script src="/static/assets/js/wow.min.js"></script>
+    <script src="/static/assets/js/custom-wow.js"></script>
+
+    <!-- script js -->
+    <script src="/static/assets/js/script.js"></script>
+
+    <!-- thme setting js -->
+    <script src="/static/assets/js/theme-setting.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+
+
+
+
+
+    <script src="/static/assets/js/function.js"></script>    
+
+    
+    
+    <!-- Cart Section Start -->
+    <div class="onhover-div" id="header-cart-list">
+        <ul class="cart-list">
+
+            {% for product_id, item in cart_data.items %} 
+
+            <li class="product-box-contain">
+                <div class="drop-cart">
+                    <a href="product-left-thumbnail.html" class="drop-image">
+                        <img src="{{item.image}}"
+                            class="blur-up lazyload" alt="">
+                    </a>
+
+                    <div class="drop-contain">
+                        <a href="product-left-thumbnail.html">
+                            <h5>{{item.title}}</h5>
+                        </a>
+                        <h6><span>{{item.qty|floatformat}} x</span> ${{item.price}}</h6>
+                        <button class="close-button close_button">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+                </div>
+            </li>
+            
+            {% endfor %}
+
+        </ul>
+
+        <div class="price-box">
+            <h5>Total :</h5>
+            <h4 class="theme-color fw-bold">${{cart_total_amount|floatformat}}</h4>
+        </div>
+
+        <div class="button-group">
+            <a  href="{% url 'ecommerceapp:cart' %}" class="btn btn-sm cart-button">View Cart</a>
+            <a href="checkout.html" class="btn btn-sm cart-button theme-bg-color
+            text-white">Checkout</a>
+        </div>
+    </div>
+    <!-- Cart Section End -->
